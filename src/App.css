@@ -895,9 +895,9 @@ body {
 .history-list::-webkit-scrollbar-track { background: transparent; }
 .history-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
-/* ===== MOBILE TABS (hidden on desktop) ===== */
+/* ===== MOBILE CARD TRAY (hidden on desktop) ===== */
 
-.mobile-tabs {
+.mobile-card-tray {
   display: none;
 }
 
@@ -970,32 +970,7 @@ body {
     font-size: 12px;
   }
 
-  /* --- Mobile tab bar --- */
-  .mobile-tabs {
-    display: flex;
-    border-bottom: 1px solid var(--border);
-    flex-shrink: 0;
-  }
-
-  .mobile-tab-btn {
-    flex: 1;
-    padding: 10px;
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: color 0.15s, border-color 0.15s;
-  }
-
-  .mobile-tab-btn.active {
-    color: var(--text-primary);
-    border-bottom-color: var(--accent);
-  }
-
-  /* --- Section content on mobile: stack, show/hide via tab --- */
+  /* --- Section content on mobile --- */
   .section-content {
     flex-direction: column;
   }
@@ -1024,51 +999,78 @@ body {
     font-size: 12px;
   }
 
-  /* Notes tab */
-  .mobile-tab-notes .section-sidebar {
-    display: none;
-  }
-
-  .mobile-tab-notes .note-area {
-    display: flex;
-  }
-
-  /* Cards tab */
-  .mobile-tab-cards .note-area {
-    display: none;
-  }
-
-  .mobile-tab-cards .section-sidebar {
-    display: flex;
-    width: 100%;
-    padding: 12px;
-    flex: 1;
-    min-height: 0;
-  }
-
+  /* Notes always visible; sidebar hidden — replaced by mobile tray */
   .note-area {
-    display: none; /* hidden until tab activates it */
+    display: flex;
   }
 
   .section-sidebar {
-    display: none; /* hidden until tab activates it */
+    display: none;
   }
 
-  /* --- Sidebar on mobile (cards tab) --- */
-  .card-deck-btn {
-    padding: 16px;
-    flex-direction: row;
-    justify-content: center;
+  /* --- Mobile card tray --- */
+  .mobile-card-tray {
+    display: flex;
+    align-items: center;
     gap: 10px;
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
     flex-shrink: 0;
   }
 
-  .card-deck-icon {
-    font-size: 20px;
+  .mobile-card-tray-cards {
+    flex: 1;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    align-items: center;
+    min-width: 0;
+    padding-bottom: 2px;
   }
 
-  .card-deck-label {
-    font-size: 15px;
+  .mobile-card-tray-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-card-tray-empty {
+    color: var(--text-muted);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .mobile-card-tray .card-chip {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .mobile-draw-btn {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, transform 0.1s;
+  }
+
+  .mobile-draw-btn:active {
+    transform: scale(0.92);
+  }
+
+  .mobile-draw-btn:disabled {
+    background: var(--text-muted);
+    cursor: default;
+    transform: none;
   }
 
   /* --- Session complete --- */

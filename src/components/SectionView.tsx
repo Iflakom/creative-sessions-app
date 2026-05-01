@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useSessionState, useSessionDispatch } from '../context/SessionContext';
 import { useTimer } from '../hooks/useTimer';
 import { Timer } from './Timer';
@@ -6,11 +5,11 @@ import { NoteArea } from './NoteArea';
 import { CardDeck } from './CardDeck';
 import { DrawnCards } from './DrawnCards';
 import { PreviousSectionsPanel } from './PreviousSectionsPanel';
+import { MobileCardTray } from './MobileCardTray';
 
 export function SectionView() {
   const { sectionStarted, sections, currentSectionIndex } = useSessionState();
   const dispatch = useSessionDispatch();
-  const [mobileTab, setMobileTab] = useState<'notes' | 'cards'>('notes');
   useTimer();
 
   const section = sections[currentSectionIndex];
@@ -36,21 +35,7 @@ export function SectionView() {
   return (
     <div className="section-view">
       <Timer />
-      <div className="mobile-tabs">
-        <button
-          className={`mobile-tab-btn ${mobileTab === 'notes' ? 'active' : ''}`}
-          onClick={() => setMobileTab('notes')}
-        >
-          Notes
-        </button>
-        <button
-          className={`mobile-tab-btn ${mobileTab === 'cards' ? 'active' : ''}`}
-          onClick={() => setMobileTab('cards')}
-        >
-          Cards
-        </button>
-      </div>
-      <main className={`section-content mobile-tab-${mobileTab}`}>
+      <main className="section-content">
         <PreviousSectionsPanel />
         <NoteArea />
         <aside className="section-sidebar">
@@ -58,6 +43,7 @@ export function SectionView() {
           <DrawnCards />
         </aside>
       </main>
+      <MobileCardTray />
     </div>
   );
 }
