@@ -980,12 +980,19 @@ body {
     width: 100%;
     flex-direction: row;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
     border-right: none;
     border-bottom: 1px solid var(--border);
-    padding: 8px 12px;
+    padding: 8px 8px 8px 12px;
+    padding-right: 32px;
     gap: 6px;
     flex-shrink: 0;
     height: auto;
+  }
+
+  .sections-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .sections-nav-label {
@@ -993,10 +1000,20 @@ body {
   }
 
   .sections-nav-item {
-    white-space: nowrap;
-    flex: 0 0 auto;
-    padding: 6px 12px;
+    flex: 0 0 110px;
+    width: 110px;
+    padding: 6px 8px;
     font-size: 12px;
+    background: var(--bg-card);
+    border-color: var(--border);
+    scroll-snap-align: start;
+    gap: 6px;
+  }
+
+  .sections-nav-item .sections-nav-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   /* Notes always visible; sidebar hidden — replaced by mobile tray */
