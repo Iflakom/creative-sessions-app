@@ -20,7 +20,8 @@ export function Timer() {
     <>
       <header className="timer-bar">
         <div className="timer-section-name">
-          {currentSectionIndex + 1}/3: {section.displayName}
+          <span className="timer-section-index">{currentSectionIndex + 1}/3</span>
+          {section.displayName}
         </div>
         <div
           className={`timer-display ${isUrgent ? 'urgent' : ''} ${isCritical ? 'critical' : ''} ${timerExpired ? 'expired' : ''}`}
@@ -46,7 +47,7 @@ export function Timer() {
               className="timer-btn continue-btn"
               onClick={() => dispatch({ type: 'COMPLETE_SECTION' })}
             >
-              {nextSection ? `Continue → ${nextSection.displayName}` : 'See Results →'}
+              {nextSection ? `Next →` : 'Results →'}
             </button>
           )}
         </div>
